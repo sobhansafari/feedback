@@ -12,10 +12,10 @@
     </div>
 
     <script>
-        // لیست وضعیت‌ها
+        
         var statuses = ['ثبت شده', 'در حال بررسی', 'رسیدگی شده'];
 
-        // تابع بارگذاری
+     
         function loadFeedbacks() {
             fetch('/api/feedbacks')
                 .then(function(response) {
@@ -24,13 +24,13 @@
                 .then(function(data) {
                     var container = document.getElementById('feedbackList');
                     
-                    // اگر داده خالی بود
+                  
                     if (data.length === 0) {
                         container.innerHTML = '<div class="alert alert-info">هیچ فیدبکی ثبت نشده است.</div>';
                         return;
                     }
                     
-                    // ساخت لیست
+                
                     var html = '<div class="list-group">';
                     for (var i = 0; i < data.length; i++) {
                         var f = data[i];
@@ -59,7 +59,6 @@
                 });
         }
 
-        // تابع به‌روزرسانی وضعیت
         function updateStatus(id, newStatus) {
             fetch('/api/feedbacks/' + id, {
                 method: 'PUT',
@@ -80,7 +79,7 @@
             });
         }
 
-        // وقتی صفحه لود شد، اجرا کن
+       
         window.onload = loadFeedbacks;
     </script>
 </body>

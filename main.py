@@ -7,7 +7,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///feedback.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# مدل
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -24,11 +23,9 @@ class Feedback(db.Model):
             'created_at': self.created_at.strftime('%Y-%m-%d %H:%M')
         }
 
-# ایجاد دیتابیس
 with app.app_context():
     db.create_all()
 
-# مسیرها
 @app.route('/')
 def index():
     return render_template('index.html')
